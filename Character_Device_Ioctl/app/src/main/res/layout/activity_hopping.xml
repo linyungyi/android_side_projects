@@ -1,0 +1,86 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"    
+    android:background="#111111"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"    
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    tools:context=".MainActivity">
+
+  	    
+    <LinearLayout
+       android:id="@+id/layout_hopping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+  	        android:orientation="vertical" >
+	</LinearLayout>
+	
+    <LinearLayout
+       android:id="@+id/layout_hopping_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+           <TextView
+            android:id="@+id/label_main_freq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_main_freq"
+            android:textColor="#cccccc" />
+
+        <EditText
+            android:id="@+id/edit_main_freq"
+            android:layout_width="10dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:hint="@string/dev_name_hint"
+            android:minHeight="20dp"
+            android:text="@string/main_freq"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/activity_vertical_margin"
+            android:textStyle="normal"
+            android:typeface="serif" />
+        
+        <TextView
+            android:id="@+id/label_main_freq_uint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_main_freq_uint"
+            android:textColor="#cccccc" />
+        <TextView
+            android:id="@+id/label_shift_freq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_shift_freq"
+            android:textColor="#cccccc" />
+
+        <EditText
+            android:id="@+id/edit_shift_freq"
+            android:layout_width="50dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:hint="@string/dev_name_hint"
+            android:minHeight="20dp"
+            android:text="@string/shift_freq"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/activity_vertical_margin"
+            android:textStyle="normal"
+            android:typeface="serif" />
+        <TextView
+            android:id="@+id/label_shift_freq_uint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_shift_freq_uint"
+            android:textColor="#cccccc" />
+        
+        <Button
+            android:id="@+id/btn_reset_ui_id"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:minHeight="20dp"
+            android:text="@string/btn_reset_ui"
+            android:textColor="#ffffff"
+            android:typeface="serif" />    
+    
+	</LinearLayout>
+</LinearLayout>

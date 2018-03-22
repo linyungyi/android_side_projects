@@ -1,0 +1,40 @@
+apply plugin: 'com.android.model.application'
+
+tasks.withType(JavaCompile) {
+	sourceCompatibility = JavaVersion.VERSION_1_7
+	targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+model {
+	android {
+		compileSdkVersion = 17
+		buildToolsVersion = "22.0.1"
+
+		defaultConfig.with {
+			applicationId = "com.my.control"
+			minSdkVersion.apiLevel = 14
+			targetSdkVersion.apiLevel = 17
+		}
+	}
+	
+	android.ndk {
+		moduleName = "my-jni"
+		ldLibs += "log"
+		//moduleName "my-jni"
+		//ldLibs "log"
+		//ldFlags.add("log")
+	}
+
+	android.buildTypes {
+		release {
+			minifyEnabled = false
+			proguardFiles += file('proguard-rules.txt')
+			//proguardFiles.add(file("proguard-rules.pro"))
+		}
+	}
+}
+
+dependencies {
+	compile 'com.android.support:gridlayout-v7:22.2.1'
+	compile 'com.android.support:support-v4:22.2.1'
+}

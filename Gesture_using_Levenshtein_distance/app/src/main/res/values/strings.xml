@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Gesture</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="menu_test01">TEST01</string>
+    <string name="menu_test02">TEST02</string>
+    <string name="menu_export">EXPORT</string>
+</resources>

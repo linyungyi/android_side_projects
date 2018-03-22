@@ -1,0 +1,175 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#111111"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+    tools:context=".MainActivity" >
+
+	<LinearLayout
+	    android:id="@+id/layout_menu"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical" >
+	</LinearLayout>
+  	    
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_dev_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_sensor_trace_number"
+            android:textColor="#cccccc" />
+
+        <EditText
+            android:id="@+id/edit_dev_name"
+            android:layout_width="190dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:hint="@string/dev_name_hint"
+            android:minHeight="20dp"
+            android:text="@string/edit_sensor_number"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/activity_vertical_margin"
+            android:textStyle="normal"
+            android:typeface="serif" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_flash_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_driving_trace_number"
+            android:textColor="#cccccc" />
+
+        <EditText
+            android:id="@+id/edit_flash_path"
+            android:layout_width="194dp"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/dev_name_hint"
+            android:minHeight="20dp"
+            android:text="@string/edit_driving_number"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/activity_vertical_margin"
+            android:textStyle="normal"
+            android:typeface="serif" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp" >
+
+        <TextView
+            android:id="@+id/label_path_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_gpio_output_index"
+            android:textColor="#cccccc" />
+
+        <EditText
+            android:id="@+id/edit_file_path"
+            android:layout_width="167dp"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:hint="@string/dev_name_hint"
+            android:minHeight="20dp"
+            android:text="@string/edit_gpio_output_index"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/activity_vertical_margin"
+            android:textStyle="normal"
+            android:typeface="serif" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/label_driver_ver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_gpio_output_get"
+            android:textColor="#cccccc" />
+
+        <EditText
+            android:id="@+id/edit_driver_ver"
+            android:layout_width="183dp"
+            android:layout_height="38dp"
+            android:ems="10"
+            android:hint="@string/driver_ver_hint"
+            android:minHeight="20dp"
+            android:text="@string/edit_gpio_output_get"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/activity_vertical_margin"
+            android:textStyle="normal"
+            android:typeface="serif" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <Button
+            android:id="@+id/btn_set_trace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="20dp"
+            android:text="@string/btn_set_trace"
+            android:textColor="#ffffff"
+            android:typeface="serif" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_set_gpio_output_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="20dp"
+        android:text="@string/btn_set_gpio_output_index"
+        android:textColor="#ffffff"
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/btn_gpio_high"
+        style="android:buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="20dp"
+        android:text="@string/btn_gpio_high"
+        android:textColor="#ffffff"
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/btn_gpio_low"
+        style="android:buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="20dp"
+        android:text="@string/btn_gpio_low"
+        android:textColor="#ffffff"
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/btn_gpio_get_status"
+        style="android:buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="20dp"
+        android:text="@string/btn_gpio_get_status"
+        android:textColor="#ffffff"
+        android:typeface="serif" />
+
+</LinearLayout>

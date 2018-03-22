@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="COLOR_LIGHT_GRAY">#F0F0F0</color>
+    <color name="COLOR_RED_10"> #930000	</color>
+    <color name="COLOR_RED_9"> #AE0000	</color>   	
+    <color name="COLOR_RED_8"> #CE0000	</color>   	
+    <color name="COLOR_RED_7"> #EA0000	</color>   	
+    <color name="COLOR_RED_6"> #FF0000	</color>   	
+    <color name="COLOR_RED_5"> #FF2D2D	</color>   	
+    <color name="COLOR_RED_4"> #FF5151	</color>   	
+    <color name="COLOR_RED_3"> #ff7575	</color>   	
+    <color name="COLOR_RED_2"> #FF9797	</color>   	
+    <color name="COLOR_RED_1"> #FFB5B5	</color>   
+    <color name="COLOR_BLUE_10"> #000093	</color>  
+    <color name="COLOR_BLUE_9"> #0000C6	</color>  
+    <color name="COLOR_BLUE_8"> #0000E3	</color>  
+    <color name="COLOR_BLUE_7"> #2828FF	</color>  
+    <color name="COLOR_BLUE_6"> #4A4AFF	</color>  
+    <color name="COLOR_BLUE_5"> #6A6AFF	</color>  
+    <color name="COLOR_BLUE_4"> #7D7DFF	</color>  
+    <color name="COLOR_BLUE_3"> #9393FF	</color>  
+    <color name="COLOR_BLUE_2"> #AAAAFF	</color>  
+    <color name="COLOR_BLUE_1"> #B9B9FF	</color>  
+    <color name="COLOR_GREEN_10"> #007500 </color> 
+    <color name="COLOR_GREEN_9"> #009100 </color>   
+    <color name="COLOR_GREEN_8"> #00A600 </color>   
+    <color name="COLOR_GREEN_7"> #00BB00 </color>   
+    <color name="COLOR_GREEN_6"> #00DB00 </color>   
+    <color name="COLOR_GREEN_5"> #00EC00 </color>   
+    <color name="COLOR_GREEN_4"> #28FF28 </color>   
+    <color name="COLOR_GREEN_3"> #53FF53 </color>   
+    <color name="COLOR_GREEN_2"> #79FF79 </color>   
+    <color name="COLOR_GREEN_1"> #93FF93 </color>   
+    <color name="COLOR_DEF_GRID_WORD">#006400</color>
+    <color name="COLOR_YELLOW">#FFFF00</color>
+</resources>

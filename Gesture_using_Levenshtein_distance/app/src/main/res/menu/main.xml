@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".FullscreenActivity">
+
+    <item android:id="@+id/action_test01"
+        android:title="@string/menu_test01"
+        android:orderInCategory="80"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/action_test02"
+        android:title="@string/menu_test02"
+        android:orderInCategory="80"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/action_export"
+        android:title="@string/menu_export"
+        android:orderInCategory="80"
+        app:showAsAction="withText"/>
+</menu>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">myouch</string>
+    
+    <string name="action_settings">Settings</string>
+    <string name="action_about">About</string>
+    <string name="action_exit">Exit</string>
+    
+    <string name="label_dev_name">设备名称：</string>
+    <string name="label_flash_path">固件位置：</string>
+	<string name="label_path_name">档案路径：</string>    
+	<string name="label_connect">请连接设备</string>
+	
+	<string name="msg_connect_ok">连接设备成功</string>		
+	<string name="msg_connect_fail">设备连接失败, 请确定有读取权限(例:chmod 777)</string>
+	    
+	<string name="label_driver_ver">驱动版本：</string>	
+	<string name="edit_driver_ver">请读取驱动版本</string>
+	<string name="driver_ver_hint">请读取驱动版本</string>	
+	<string name="driver_ver">0</string> 	
+	<string name="btn_driver_ver_get">驱动版本读取</string>	        
+    
+    <string name="dev_name">/dev/my62xx_ts0</string>           
+    <string name="edit_file_path">/mnt/extsd/</string>
+    <string name="edit_flash_path">/mnt/extsd/my62xx.bin</string>
+    
+    <string name="btn_connect">连接设备</string>
+    
+	<string name="btn_flash_write">固件烧录</string>
+	<string name="btn_flash_read">固件读取</string>
+	<string name="btn_default_get">预设资讯读取</string>			
+	<string name="btn_path_name_get">路径设定</string>	
+    
+    <string name="btn_rst">重启固件</string>
+	<string name="btn_rst_low">重启拉低</string>    
+	<string name="btn_rst_high">重启拉高</string>
+	
+	<array name= "items_set_gpio">
+		<item>重启固件</item>
+		<item>重启拉低</item>
+		<item>重启拉高</item>
+		<item>GPIO拉高</item>
+		<item>GPIO拉低</item>
+	</array>
+	<string name="dev_name_hint">Please enter the device name</string>
+	<string name="btn_show_main">返回</string>
+	<string name="btn_execute_run_mode">执行</string>
+	<string name="btn_mdev">互容</string>
+	<string name="btn_idev">自容</string>
+	<string name="btn_mbase">AD差值</string>
+	<string name="btn_mad">互容基准值</string>
+	<string name="btn_iad">自容基准值</string>
+	<string name="label_run_item">请选择: </string>
+	<string name="select_items_title">请选择执行的项目 :</string>
+	<array name= "items_run_dialog">
+		<item>互容基准值</item>
+		<item>互容基准差值</item>
+		<item>互容感应量</item>
+		<item>自容感应量</item>
+		<item>自容基准值</item>
+		<item>坐标传输</item>
+	</array>
+	<string name="label_sensor_trace_number"> Sensor number :</string>
+	<string name="label_driving_trace_number">driver number :</string>
+	<string name="label_gpio_output_index">gpio output index :</string>
+	<string name="label_gpio_input_get">Gpio input :</string>
+	<string name="label_gpio_output_get">gpio output get :</string>
+	<string name="btn_set_trace">setting trace</string>
+	<string name="btn_set_gpio_output_index">set gpio index</string>
+	<string name="edit_driving_number">15</string>
+	<string name="edit_sensor_number">10</string>
+	<string name="edit_gpio_output_index">1</string>
+	<string name="edit_gpio_output_get">0</string>
+	<string name="btn_gpio_high">GPIO拉高</string>
+	<string name="btn_gpio_low">GPIO拉低</string>
+	<string name="btn_gpio_get_status">Get GPIO Status</string>
+	<string name="label_row"> 发射  : </string>
+	<string name="edit_row">15</string>
+	<string name="label_col">接收  :  </string>
+	<string name="edit_col">10</string>
+	<string name="edit_senid_index">0/0/0</string>
+	<string name="label_senid_index">屏編號  :  </string>
+	<string name="label_fw_ver">固件版本  :  </string>
+	<string name="edit_fw_ver">00-00-00-00-00-00-00-00</string>
+	<string name="btn_info_get">资讯读取</string>
+	<string name="btn_reset_ui">重置画面</string>
+	<string name="label_select_item">请选择 : </string>
+	<string name="label_main_freq">主要频率 ：</string>
+	<string name="main_freq">32</string>	
+	<string name="label_main_freq_uint">MHz</string>
+	<string name="label_shift_freq">  偏移频率 ：</string>
+	<string name="shift_freq">100</string>	
+	<string name="label_shift_freq_uint">%</string>
+	<string name="btn_repaint">重置画面</string>
+	<string name="label_APK_ver">APK版本 : </string>
+	<string name="edit_APK_ver">v1.05(Rev40)</string>
+	<string name="Cooridnate">座標</string>
+	<string name="devFinger">互容座標</string>
+	<string name="Reset_Again">Reset</string>
+</resources>

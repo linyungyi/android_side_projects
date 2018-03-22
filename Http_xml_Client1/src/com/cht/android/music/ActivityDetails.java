@@ -1,0 +1,259 @@
+package com.cht.android.music;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+
+import com.cht.android.music.Activities.MyHandler;
+import com.music.parser.ParserHandler;
+import com.music.parser.ParsingXML;
+import com.music.parser.data.Song;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.AdapterView.OnItemClickListener;
+
+public class ActivityDetails extends Activity {
+
+    TextView TVTopic;
+    TextView TVPeriod;
+    Button BTNDetails;
+    ListView LSongList;
+    private ArrayList<SongData> songList;
+    private static final int CON_INDEX_DOWNLOAD  = 0;
+    private static final int CON_INDEX_PLAY     = 1;
+    private static final int CON_INDEX_SETUP   = 2;
+    
+    private String ActivityTitle = null;
+    private String ActivityDescription = null;
+    private String ActivityImageUrl = null; 
+    private String ActivitySongListUrl = null; 
+    private String ActivityBeginTime = null; 
+    private String ActivityEndTime = null; 
+    
+    private String[] SongID = null;
+    private String[] AlbumUrl = null;
+    private String[] WavUrl = null;
+    
+	public static final int UPDATE_SETTING_SUCCESS = 0x0001;
+	HttpThread httpThread;
+	Song[] songsArray;
+    private String myTag = "ActivityDetails";
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        setContentView(R.layout.activity_detail);
+        Bundle bundle = this.getIntent().getExtras();
+        
+    	httpThread = new HttpThread(ActivitySongListUrl, new MyHandler(),UPDATE_SETTING_SUCCESS);
+		httpThread.start();
+		
+        ActivityTitle = bundle.getString("ActivityTitle");
+        ActivityDescription = bundle.getString("ActivityDescription");
+        ActivityImageUrl = bundle.getString("ActivityImageUrl");
+        ActivitySongListUrl = bundle.getString("ActivitySongListUrl");
+        ActivityBeginTime = bundle.getString("ActivityBeginTime");
+        ActivityEndTime = bundle.getString("ActivityEndTime");
+     //   Log.i(myTag, "ActivityImageUrl="+ActivityImageUrl+" ActivityDescription="+ActivityDescription);
+        
+        ImageView activityImageView = (ImageView) this.findViewById(R.id.ActivityImageView);
+        Bitmap bm = ImageOperations(ActivityImageUrl,"image.jpg");
+        //Bitmap bm = null;
+        activityImageView.setImageBitmap(bm);  
+        findAPcomponent();
+        setListner();
+        fillListData();
+   
+    }
+    
+    private void findAPcomponent()
+    {
+        TVTopic = (TextView)findViewById(R.id.Topic);
+        TVPeriod = (TextView)findViewById(R.id.Period);
+        BTNDetails = (Button)findViewById(R.id.btnDetails);
+        LSongList = (ListView)findViewById(R.id.DetailSongList);
+        
+        //TODO, to get data 
+        TVTopic.setText(ActivityTitle);
+        TVPeriod.setText("活動日期："+ActivityBeginTime+"~"+ActivityEndTime);        
+    }
+    
+    private void setListner()
+    {
+        BTNDetails.setOnClickListener( new OnClickListener() {
+            public void onClick(View v) {
+                showDialog(0);
+            }
+        });
+    }
+      
+    
+    @Override
+    protected Dialog onCreateDialog(int id) {
+
+        return new AlertDialog.Builder(ActivityDetails.this)
+        .setTitle(R.string.title_detail)
+        .setMessage(ActivityDescription)
+        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                /* User clicked OK so do some stuff */
+            }
+        })
+        .create();
+        
+    }
+    
+   
+    private void fillListData()
+    {
+        songList = new ArrayList<SongData>();
+
+        
+		SongID = new String[songsArray.length];
+		AlbumUrl = new String[songsArray.length];
+		WavUrl = new String[songsArray.length];
+		
+		SongData s = null;
+		for (int i = 0; i < songsArray.length; i++) {
+			SongID[i] = songsArray[i].getProductid();
+			AlbumUrl[i] = songsArray[i].getImgAlbumUrl();
+			WavUrl[i] = songsArray[i].getWavUrl();
+	        s = new SongData(songsArray[i].getImgArtistUrl(), songsArray[i].getSongName(), songsArray[i].getSinger());
+	        songList.add(s); 
+			
+		}
+        
+        SongAdapter songAdapater = new SongAdapter(this, R.layout.song_list_item, songList);
+        
+        LSongList.setAdapter(songAdapater);
+        
+        LSongList.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int pos,
+                    long id) {
+                startPlayer(pos, id);
+            }
+        });
+        
+    }
+    
+    public boolean onContextItemSelected(MenuItem aItem) {   
+        Intent intent;   
+
+        /* Switch on the ID of the item, to get what the user selected. */  
+        switch (aItem.getItemId()) {   
+            case CON_INDEX_DOWNLOAD:  
+                // TODO: Invoke browser with corresponding URL.
+                intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://hami.emome.net"));
+                startActivity(intent);               
+                return true;
+        case CON_INDEX_PLAY:
+                SongData aSong = (SongData)LSongList.getAdapter().getItem(0);
+                intent = new Intent(this, PlayerActivity.class);
+
+                intent.putExtra("Name", aSong.getName());
+                intent.putExtra("Artist", aSong.getArtist());
+            
+                this.startActivity(intent);
+            
+            return true;
+        case CON_INDEX_SETUP:
+                // TODO: Pass the information of current music to the Settings.
+                intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+        }
+        
+        return false;   
+    }   
+    
+    private void startPlayer(int pos, long id)
+    {
+        SongData src = songList.get(pos);
+
+        Intent nIntent = new Intent(this, PlayerActivity.class);
+        // TODO: Pass the data source to player
+        nIntent.putExtra("Name", src.getName());
+        nIntent.putExtra("Artist", src.getArtist());
+        nIntent.putExtra("AlbumUrl", AlbumUrl[pos]);
+        nIntent.putExtra("SongID", SongID[pos]);
+        nIntent.putExtra("WavUrl", WavUrl[pos]);
+        this.startActivity(nIntent);
+    }
+    
+	private Bitmap ImageOperations(String address, String saveFilename) {
+		String ImageTag = "ImageOperations";
+		InputStream is= null;
+		Bitmap bitmap = null;
+		try {
+			Log.i(ImageTag,"ImageOperations go:"+address);
+			URL url = new URL(address);
+			URLConnection conn = url.openConnection();
+			conn.connect();
+			is = conn.getInputStream();
+			bitmap = BitmapFactory.decodeStream(is);
+			return bitmap;
+		
+		} catch (IOException e) {
+			Log.e(ImageTag,"ImageOperations go e="+e.toString());
+			e.printStackTrace();
+			return null;
+		}finally{
+			
+			try{
+			  is.close();
+			}catch(Exception e){
+				
+			}
+			is = null;
+		}
+	}    
+
+	class MyHandler extends Handler {
+		@Override
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case UPDATE_SETTING_SUCCESS:
+		     //   RecommendActivity.songdata = myHandler.getParsedSongsArray();
+				ParsingXML pXml = new ParsingXML(httpThread.getFinishedInputStream());
+				ParserHandler pHandler = pXml.parsingData();
+		        songsArray = pHandler.getParsedSongsArray();
+
+				break;
+
+			}
+			super.handleMessage(msg);
+		}
+	}		
+    
+}
+
+
+
+
